@@ -79,7 +79,7 @@ defmodule Mongoex.Base do
         if record.new_record? do
           keywords = Keyword.delete keywords, :_id
         end
-        list_to_tuple List.flatten Enum.map keywords, fn(x) -> tuple_to_list(x) end
+        list_to_tuple :lists.append Enum.map keywords, fn(x) -> tuple_to_list(x) end
       end
 
       defp result_to_record(result) do
